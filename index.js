@@ -1,5 +1,5 @@
 
-
+import cors from 'cors'
 import express, { json } from 'express';
 
 import {logSomething} from './utils.js';
@@ -14,10 +14,14 @@ let todos=[
 ]
 const PORT=process.env.PORT||5050;
 const app=express();
-
+//toplevel/global await
+await connnectToDb();
 //json middleware
-app.use(express.json());
 app.use(express.static("public"));
+app.use(cors())
+
+app.use(express.json());
+
 
 
 //***************************Router   */
@@ -40,8 +44,6 @@ app.get("/api/:name", (req, res,)=>{
     console.log("params:", pathParams.name);
     res.send({ pathParams,query:req.query});
 })
-//toplevel/global await
-await connnectToDb();
 
 app.listen(PORT, () => {console.log(`Application is listening on ${PORT}`);
 logSomething();

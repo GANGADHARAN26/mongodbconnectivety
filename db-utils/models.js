@@ -11,6 +11,9 @@
     dob:{
         type:"string",
         required: true
+    },imageUrl:{
+        type:"string",
+        required: true
     }
  })
  const user=mongoose.model('users', userSchema)

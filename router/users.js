@@ -1,4 +1,5 @@
 import express from "express";
+import {v4} from "uuid";
 import { user as userModel} from "../db-utils/models.js";
 // let users=[
 //     {id:1,name:"gangadharan",dob:'2023-02-30'},
@@ -23,7 +24,7 @@ userRouter.get("/", async(req, res)=>{
 //post method********************************************************
 userRouter.post("/", async(req, res)=>{
    try{
-    const user=new userModel(req.body)
+    const user=new userModel({...req.body,id:v4()});
     await user.save().then(()=>{console.log('User saved')});
     res.send({message:'user updates successfully'})
    }
