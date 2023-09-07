@@ -12,7 +12,7 @@ const userRouter=express.Router();
 //get method
 userRouter.get("/", async(req, res)=>{
    try{
-    const users=await userModel.find({},{id:1,name:1,dob:1,_id:0});
+    const users=await userModel.find({},{id:1,name:1,dob:1,imageUrl:1,_id:0});
   
     res.send(users)
    }catch(err){
