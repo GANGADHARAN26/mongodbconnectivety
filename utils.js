@@ -1,4 +1,4 @@
 export const logSomething = () => {
-    console.log('fuck you bitch');
+    console.log('hello world');
   }
   
